@@ -5,14 +5,14 @@ import Link from "next/link";
 const statusStyle = `border text-sm p-1 rounded min-w-[50px] text-center`;
 
 const getAllList = async () => {
-  const res = await fetch("http://localhost:3000/api/todos", {
+  const res = await fetch("http://localhost:3002/api/todos", {
     cache: "no-cache",
   });
   const data = await res.json();
   return data.posts;
 };
 
-export default async function Todo() {
+export default async function Page() {
   const todos = await getAllList();
 
   return (

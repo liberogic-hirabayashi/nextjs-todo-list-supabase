@@ -6,7 +6,7 @@ import Status from "../../../_components/Status/page";
 const buttonStyle = `border p-1 px-4 rounded text-white`;
 
 const editTodo = async (title: string | undefined, id: number) => {
-  const res = await fetch(`http://localhost:3000/api/todos/${id}`, {
+  const res = await fetch(`http://localhost:3002/api/todos/${id}`, {
     method: "PUT",
     body: JSON.stringify({ title, id }),
     headers: {
@@ -16,7 +16,7 @@ const editTodo = async (title: string | undefined, id: number) => {
   return res.json();
 };
 const deleteTodo = async (id: number) => {
-  const res = await fetch(`http://localhost:3000/api/todos/${id}`, {
+  const res = await fetch(`http://localhost:3002/api/todos/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -25,13 +25,13 @@ const deleteTodo = async (id: number) => {
   return res.json();
 };
 const getStatusValue = async (id: number) => {
-  const res = await fetch(`http://localhost:3000/api/todos/${id}`);
+  const res = await fetch(`http://localhost:3002/api/todos/${id}`);
   const data = await res.json();
   return await data.posts.status;
 };
 
 const getTodoById = async (id: number) => {
-  const res = await fetch(`http://localhost:3000/api/todos/${id}`);
+  const res = await fetch(`http://localhost:3002/api/todos/${id}`);
   const data = await res.json();
   return await data.posts;
 };

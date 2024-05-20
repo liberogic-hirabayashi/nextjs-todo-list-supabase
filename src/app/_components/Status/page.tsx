@@ -1,9 +1,8 @@
-"use client";
 import React from "react";
 import { useRouter } from "next/navigation";
 
 const statusTodo = async (status: string, id: number) => {
-  const res = await fetch(`http://localhost:3000/api/todos/${id}`, {
+  const res = await fetch(`http://localhost:3002/api/todos/${id}`, {
     method: "PUT",
     body: JSON.stringify({ status, id }),
     headers: {
@@ -14,8 +13,13 @@ const statusTodo = async (status: string, id: number) => {
   return data;
 };
 
-
-export default function Status({ todoId,statusValue }: { todoId: number,statusValue:string }){
+export default function Page({
+  todoId,
+  statusValue,
+}: {
+  todoId: number;
+  statusValue: string;
+}) {
   const router = useRouter();
 
   const handleStatus = async (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -39,5 +43,4 @@ export default function Status({ todoId,statusValue }: { todoId: number,statusVa
       </select>
     </div>
   );
-};
-
+}

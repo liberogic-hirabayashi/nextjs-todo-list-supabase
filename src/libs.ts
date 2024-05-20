@@ -7,6 +7,6 @@ export const createClient = async () => {
     prisma.$connect();
     console.log("接続しました");
   } catch (error) {
-    return Error('接続に失敗しました')
+    return Error("接続に失敗しました");
   }
 };
