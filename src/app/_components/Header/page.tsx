@@ -4,7 +4,13 @@ import { supabase } from "../../../supabase-client";
 
 const buttonStyle = `border p-1 px-4 rounded text-white`;
 
-export default function Page({signOut,GitHubSignIn}:{signOut:any,GitHubSignIn:any}) {
+export default function Page({
+  signOut,
+  GitHubSignIn,
+}: {
+  signOut: any;
+  GitHubSignIn: any;
+}) {
   const [session, setSession] = useState<any>();
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
