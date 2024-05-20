@@ -1,21 +1,21 @@
 import { PrismaClient } from "@prisma/client";
 import { createClient } from "../../../../libs";
 import { NextResponse } from "next/server";
+import {prismaInstats} from "../../../../libs"
 
-const prisma=new PrismaClient();
 
 export const GET = async (req: Request, res: NextResponse) => {
     try {
       const id: number = parseInt(req.url.split("/todos/")[1]);
       await createClient();
-      const posts = await prisma.post.findFirst({
+      const posts = await prismaInstats.post.findFirst({
         where: { id },
       });
       return NextResponse.json({ message: "Success", posts });
     } catch (error) {
       return NextResponse.json("GET Error");
     } finally {
-      await prisma.$disconnect();
+      await prismaInstats.$disconnect();
     }
   };
   
@@ -23,7 +23,7 @@ export const GET = async (req: Request, res: NextResponse) => {
     try {
       const id: number = parseInt(req.url.split("/todos/")[1]);
       await createClient();
-      const posts = await prisma.post.delete({
+      const posts = await prismaInstats.post.delete({
         where: { id },
       });
       return NextResponse.json({ message: "Success", posts });
@@ -31,7 +31,7 @@ export const GET = async (req: Request, res: NextResponse) => {
       console.error(error)
       return NextResponse.json("DELETE Error");
     } finally {
-      await prisma.$disconnect();
+      await prismaInstats.$disconnect();
     }
   };
   
@@ -40,7 +40,7 @@ export const GET = async (req: Request, res: NextResponse) => {
       const id: number = parseInt(req.url.split("/todos/")[1]);
       const { title,status } = await req.json();
       await createClient();
-      const posts = await prisma.post.update({
+      const posts = await prismaInstats.post.update({
         data: { title,status },
         where: { id },
       });
@@ -49,7 +49,7 @@ export const GET = async (req: Request, res: NextResponse) => {
       console.error(error);
       return NextResponse.json("PUT Error");
     } finally {
-      await prisma.$disconnect();
+      await prismaInstats.$disconnect();
     }
   };
   
