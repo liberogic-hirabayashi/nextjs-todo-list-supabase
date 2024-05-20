@@ -1,23 +1,26 @@
 "use client";
 import { useState, useEffect } from "react";
 import { supabase } from "../../../supabase-client";
+import React, { useContext } from "react";
+
+import { createContext } from "react";
+export const MyContext = createContext("useContextのテスト");
 
 const buttonStyle = `border p-1 px-4 rounded text-white`;
 
-export default function Page({}) {
-  const [session, setSession] = useState<any>()
-  const [signIn,setSignIn]=useState<boolean>(false)
-  useEffect(() => {
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setSession(session);
-      }
-    );
+export default function Page({value}:{value:any}) {
+  const [session, setSession] = useState<any>();
 
-    return () => {
-      authListener;
-    };
-  }, []);
+  // useEffect(() => {
+  //   const { data: authListener } = supabase.auth.onAuthStateChange(
+  //     (event, session) => {
+  //       setSession(session);
+  //     }
+  //   );
+  //   return () => {
+  //     authListener;
+  //   };
+  // }, []);
 
   const GitHubSignIn = () => {
     supabase.auth.signInWithOAuth({
@@ -29,11 +32,10 @@ export default function Page({}) {
     supabase.auth.signOut();
   };
 
-
   return (
     <header className="sticky flex text-white justify-center border-b">
       <div className="flex items-center justify-end w-full h-16 max-w-3xl px-4 mx-auto sm:px-6">
-        {session ? (
+        {value ? (
           <button onClick={signOut} className={buttonStyle}>
             サインアウト
           </button>
