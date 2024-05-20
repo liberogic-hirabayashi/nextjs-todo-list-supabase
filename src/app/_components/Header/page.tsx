@@ -4,14 +4,9 @@ import { supabase } from "../../../supabase-client";
 
 const buttonStyle = `border p-1 px-4 rounded text-white`;
 
-export default function Page({
-  signOut,
-  GitHubSignIn,
-}: {
-  signOut: any;
-  GitHubSignIn: any;
-}) {
-  const [session, setSession] = useState<any>();
+export default function Page({}) {
+  const [session, setSession] = useState<any>()
+  const [signIn,setSignIn]=useState<boolean>(false)
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
@@ -23,6 +18,17 @@ export default function Page({
       authListener;
     };
   }, []);
+
+  const GitHubSignIn = () => {
+    supabase.auth.signInWithOAuth({
+      provider: "github",
+    });
+  };
+
+  const signOut = () => {
+    supabase.auth.signOut();
+  };
+
 
   return (
     <header className="sticky flex text-white justify-center border-b">
