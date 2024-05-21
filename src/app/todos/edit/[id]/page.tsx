@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import Status from "../../../_components/Status/page";
+import Status from "../../../_components/Status/Status";
 
 const buttonStyle = `border p-1 px-4 rounded text-white`;
 

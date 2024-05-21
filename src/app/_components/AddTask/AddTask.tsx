@@ -18,7 +18,7 @@ const postTodo = async (title: string, status: string) => {
   return data;
 };
 
-export default function Page() {
+export default function AddTask() {
   const [tasktitle, setTaskTitle] = useState<string>("");
 
   const router = useRouter();
@@ -33,7 +33,7 @@ export default function Page() {
   };
 
   return (
-    <form onSubmit={handleClick}>
+    <form onSubmit={handleClick} className="text-center text-black">
       <input
         type="text"
         value={tasktitle}

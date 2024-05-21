@@ -1,22 +1,23 @@
+"use client";
 
-import AddTask from "./_components/AddTask/page";
-import Todo from "./_components/Todo/page";
-import Header from "./_components/Header/page";
-import { supabase } from "../supabase-client";
-import React, { Children, useContext } from "react";
-import { AuthContext } from "../AuthContext";
+import AddTask from "./_components/AddTask/AddTask";
+import Header from "./_components/Header/Header";
+import { AuthProvider } from "./AuthContext2";
+import TodoContent from "./_components/TodoContent";
+import withAuth from "./AuthGuard";
+
+const ProtectedTodoContent = withAuth(TodoContent);
 
 export default function Home() {
   return (
-    <>
-      <AuthContext/>
-      <div className="pt-32 w-[500px] m-auto flex-col flex items-center">
-          <h1 className="text-[32px] font-bold mb-4 text-white">
-            Next.js Todo List
-          </h1>
-          <AddTask />
-          <Todo />
-        </div>
-    </>
+    <AuthProvider>
+      <Header />
+      <div className="pt-32 m-auto flex-col flex items-center">
+        <h1 className="text-[32px] font-bold mb-4 text-white">
+          Next.js Todo List
+        </h1>
+        <ProtectedTodoContent />
+      </div>
+    </AuthProvider>
   );
 }

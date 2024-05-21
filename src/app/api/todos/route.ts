@@ -1,8 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { createClient } from "../../../libs";
 import { NextResponse } from "next/server";
-import {prismaInstats} from "../../../libs"
-
+import { prismaInstats } from "../../../libs";
 
 export const GET = async (req: Request, res: NextResponse) => {
   try {

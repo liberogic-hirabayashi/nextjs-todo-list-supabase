@@ -13,7 +13,7 @@ const statusTodo = async (status: string, id: number) => {
   return data;
 };
 
-export default function Page({
+export default function Status({
   todoId,
   statusValue,
 }: {
