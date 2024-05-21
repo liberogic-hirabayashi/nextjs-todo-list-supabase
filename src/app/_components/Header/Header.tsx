@@ -1,9 +1,6 @@
 "use client";
 import { useAuth } from "../../AuthContext2";
 
-import { createContext } from "react";
-export const MyContext = createContext("useContextのテスト");
-
 const buttonStyle = `border p-1 px-4 rounded text-white`;
 
 export default function Header() {
@@ -18,10 +15,10 @@ export default function Header() {
           </button>
         ) : (
           <div className="flex items-center">
-          <p className="mr-4">🔑 ログインしてください</p>
-          <button onClick={login} className={buttonStyle}>
-            GitHubでログイン
-          </button>
+            <p className="mr-4 text-sm">🔑 ログインしてください</p>
+            <button onClick={login} className={buttonStyle}>
+              GitHubでログイン
+            </button>
           </div>
         )}
       </div>

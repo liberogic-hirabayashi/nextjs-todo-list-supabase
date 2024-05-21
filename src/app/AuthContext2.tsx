@@ -28,7 +28,6 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         if (event === "SIGNED_OUT") {
           setSession(null);
         } else if (session) {
-          console.info(session);
           setSession(session);
         }
       }

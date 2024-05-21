@@ -44,12 +44,12 @@ export default function TodoContent() {
       {session ? (
         <div>
           <AddTask />
-          <ul className=" w-[400px] mt-10">
+          <ul className="max-w-[500px] mt-10">
             {todos !== null &&
               todos.map((todo: Todos) => (
                 <li
                   key={todo.id}
-                  className="pb-2 pl-4  border-b border-[#ffffff33] mt-4 text-white "
+                  className="pb-2 border-b border-[#ffffff33] mt-4 text-white "
                 >
                   <Link
                     className="hover:text-cyan-300 text-lg flex justify-between"

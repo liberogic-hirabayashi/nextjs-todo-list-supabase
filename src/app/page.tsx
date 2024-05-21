@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <AuthProvider>
       <Header />
-      <div className="pt-32 m-auto flex-col flex items-center">
+      <div className="pt-32 px-[10px] m-auto flex-col flex items-center">
         <h1 className="text-[32px] font-bold mb-4 text-white">
           Next.js Todo List
         </h1>
