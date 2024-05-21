@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 const buttonStyle = `border p-1 px-4 rounded text-white`;
 
 const postTodo = async (title: string, status: string) => {
-  const res = await fetch("http://localhost:3002/api/todos", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_PATH}todos`, {
     method: "POST",
     body: JSON.stringify({ title, status }),
     headers: {

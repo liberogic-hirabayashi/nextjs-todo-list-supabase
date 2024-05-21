@@ -16,7 +16,7 @@ export default function TodoContent() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/todos", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_PATH}todos`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
