@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 
 const statusTodo = async (status: string, id: number) => {
-  const res = await fetch(`http://localhost:3002/api/todos/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_PATH}todos/${id}`, {
     method: "PUT",
     body: JSON.stringify({ status, id }),
     headers: {

@@ -20,7 +20,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState(null);
-  const [add, setAdd] = useState(false);
+  const [add, setAdd] = useState(null);
 
   useEffect(() => {
     const subscription = supabase.auth.onAuthStateChange(
@@ -47,7 +47,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const addTask = () => {
-    setAdd(true);
+    setAdd(null);
   };
 
   return (
